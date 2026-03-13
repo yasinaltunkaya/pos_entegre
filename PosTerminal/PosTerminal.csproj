@@ -11,4 +11,17 @@
   <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="PAYGO_OKC">
+      <HintPath>..\..\..\..\..\Downloads\paygoCihaz\TESTGMP3\TESTGMP3\bin\Debug\PAYGO_OKC.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="config.ini">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 </Project>

@@ -21,3 +21,6 @@
 /PaygoAgent/obj/project.assets.json
 /PaygoAgent/obj/project.nuget.cache
 /PaygoAgent/Properties
+/PosTerminal/logs
+/PosTerminal/obj
+/PosTerminal/bin/Debug/net8.0

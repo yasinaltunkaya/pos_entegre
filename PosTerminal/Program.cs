@@ -10,7 +10,7 @@ using PosTerminal.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.WebHost.UseUrls("http://0.0.0.0:5050");
+builder.WebHost.UseUrls("http://localhost:5050");
 
 var configPath = Path.Combine(builder.Environment.ContentRootPath, "config.ini");
 var appConfig = ConfigReader.Load(configPath);

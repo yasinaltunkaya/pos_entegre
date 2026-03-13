@@ -1,57 +1,70 @@
+using System;
+using System.Threading.Tasks;
+using System.Web.Http;
 using PosTerminal.Models;
-using PosTerminal.Services;
 
-namespace PosTerminal.Api;
-
-/// <summary>
-/// ERP-facing HTTP endpoints.
-/// Operations are delegated to the selected device implementation via FiscalDeviceManager.
-/// </summary>
-public static class PosEndpoints
+namespace PosTerminal.Api
 {
-    public static IEndpointRouteBuilder MapPosEndpoints(this IEndpointRouteBuilder app)
+    /// <summary>
+    /// Web API controller exposing ERP-facing endpoints.
+    /// Requests are delegated to the selected device via FiscalDeviceManager.
+    /// </summary>
+    [RoutePrefix("api")]
+    public class PosController : ApiController
     {
-        var group = app.MapGroup("/api").WithTags("POS Terminal");
-
-        group.MapPost("/connect", async (FiscalDeviceManager manager, CancellationToken ct) =>
+        [HttpPost]
+        [Route("connect")]
+        public async Task<IHttpActionResult> Connect()
         {
-            var result = await manager.Current.ConnectAsync(ct);
-            return Results.Ok(result);
-        }).WithName("ConnectDevice");
+            return Ok(await RuntimeContext.Manager.Current.ConnectAsync());
+        }
 
-        group.MapPost("/sale", async (SaleRequest request, FiscalDeviceManager manager, CancellationToken ct) =>
+        [HttpPost]
+        [Route("sale")]
+        public async Task<IHttpActionResult> Sale([FromBody] SaleRequest request)
         {
-            var result = await manager.Current.SaleAsync(request, ct);
-            return Results.Ok(result);
-        }).WithName("DoSale");
+            return Ok(await RuntimeContext.Manager.Current.SaleAsync(request));
+        }
 
-        group.MapPost("/xreport", async (FiscalDeviceManager manager, CancellationToken ct) =>
+        [HttpPost]
+        [Route("xreport")]
+        public async Task<IHttpActionResult> XReport()
         {
-            var result = await manager.Current.XReportAsync(ct);
-            return Results.Ok(result);
-        }).WithName("XReport");
+            return Ok(await RuntimeContext.Manager.Current.XReportAsync());
+        }
 
-        group.MapPost("/zreport", async (FiscalDeviceManager manager, CancellationToken ct) =>
+        [HttpPost]
+        [Route("zreport")]
+        public async Task<IHttpActionResult> ZReport()
         {
-            var result = await manager.Current.ZReportAsync(ct);
-            return Results.Ok(result);
-        }).WithName("ZReport");
+            return Ok(await RuntimeContext.Manager.Current.ZReportAsync());
+        }
 
-        group.MapPost("/cashier/login", async (CashierLoginRequest request, FiscalDeviceManager manager, CancellationToken ct) =>
+        [HttpPost]
+        [Route("cashier/login")]
+        public async Task<IHttpActionResult> CashierLogin([FromBody] CashierLoginRequest request)
         {
-            var result = await manager.Current.CashierLoginAsync(request, ct);
-            return Results.Ok(result);
-        }).WithName("CashierLogin");
+            return Ok(await RuntimeContext.Manager.Current.CashierLoginAsync(request));
+        }
 
-        group.MapPost("/cashier/logout", async (FiscalDeviceManager manager, CancellationToken ct) =>
+        [HttpPost]
+        [Route("cashier/logout")]
+        public async Task<IHttpActionResult> CashierLogout()
         {
-            var result = await manager.Current.CashierLogoutAsync(ct);
-            return Results.Ok(result);
-        }).WithName("CashierLogout");
+            return Ok(await RuntimeContext.Manager.Current.CashierLogoutAsync());
+        }
 
-        group.MapGet("/status", (FiscalDeviceManager manager) => Results.Ok(manager.Current.GetStatus()))
-            .WithName("GetStatus");
+        [HttpGet]
+        [Route("status")]
+        public IHttpActionResult Status()
+        {
+            return Ok(RuntimeContext.Manager.Current.GetStatus());
+        }
 
-        return app;
+        protected override void Dispose(bool disposing)
+        {
+            base.Dispose(disposing);
+        }
+
     }
 }

@@ -1,38 +1,49 @@
-namespace PosTerminal.Services;
+using System;
+using System.IO;
+using System.Threading;
+using System.Threading.Tasks;
 
-/// <summary>
-/// Thread-safe file logger writing under logs/yyyy-MM-dd.log.
-/// </summary>
-public sealed class LogService
+namespace PosTerminal.Services
 {
-    private readonly string _logDirectory;
-    private readonly SemaphoreSlim _semaphore = new(1, 1);
-
-    public LogService(IHostEnvironment environment)
+    /// <summary>
+    /// Thread-safe file logger writing under logs/yyyy-MM-dd.log.
+    /// </summary>
+    public sealed class LogService
     {
-        _logDirectory = Path.Combine(environment.ContentRootPath, "logs");
-        Directory.CreateDirectory(_logDirectory);
-    }
+        private readonly string _logDirectory;
+        private readonly SemaphoreSlim _semaphore = new SemaphoreSlim(1, 1);
 
-    public Task InfoAsync(string message, CancellationToken cancellationToken = default) =>
-        WriteAsync("INFO", message, cancellationToken);
-
-    public Task ErrorAsync(string message, CancellationToken cancellationToken = default) =>
-        WriteAsync("ERROR", message, cancellationToken);
-
-    private async Task WriteAsync(string level, string message, CancellationToken cancellationToken)
-    {
-        var filePath = Path.Combine(_logDirectory, $"{DateTime.UtcNow:yyyy-MM-dd}.log");
-        var line = $"[{DateTime.UtcNow:O}] [{level}] {message}{Environment.NewLine}";
-
-        await _semaphore.WaitAsync(cancellationToken);
-        try
+        public LogService(string basePath)
         {
-            await File.AppendAllTextAsync(filePath, line, cancellationToken);
+            _logDirectory = Path.Combine(basePath, "logs");
+            Directory.CreateDirectory(_logDirectory);
         }
-        finally
+
+        public Task InfoAsync(string message, CancellationToken cancellationToken = default(CancellationToken))
         {
-            _semaphore.Release();
+            return WriteAsync("INFO", message, cancellationToken);
+        }
+
+        public Task ErrorAsync(string message, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return WriteAsync("ERROR", message, cancellationToken);
+        }
+
+        private async Task WriteAsync(string level, string message, CancellationToken cancellationToken)
+        {
+            var filePath = Path.Combine(_logDirectory, string.Format("{0:yyyy-MM-dd}.log", DateTime.UtcNow));
+            var line = string.Format("[{0:O}] [{1}] {2}{3}", DateTime.UtcNow, level, message, Environment.NewLine);
+
+            await _semaphore.WaitAsync(cancellationToken).ConfigureAwait(false);
+            try
+            {
+                await File.AppendAllTextAsync(filePath, line, cancellationToken).ConfigureAwait(false);
+            }
+            finally
+            {
+                _semaphore.Release();
+            }
+
         }
     }
 }

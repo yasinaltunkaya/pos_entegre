@@ -1,3 +1,4 @@
+
 namespace PosTerminal.Models;
 
 /// <summary>
@@ -13,4 +14,5 @@ public sealed class AppConfig
     public int ServerPort { get; init; } = 41200;
     public string CashierUser { get; init; } = "admin";
     public string CashierPass { get; init; } = "1234";
+
 }

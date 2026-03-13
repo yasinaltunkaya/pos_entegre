@@ -1,4 +1,16 @@
-namespace PosTerminal.Models;
+namespace PosTerminal.Models
+{
+    public sealed class SaleRequest
+    {
+        public decimal Amount { get; set; }
+        public string Currency { get; set; }
+        public string ReceiptNumber { get; set; }
+    }
 
-public sealed record SaleRequest(decimal Amount, string Currency, string ReceiptNumber);
-public sealed record CashierLoginRequest(string Username, string Password);
+    public sealed class CashierLoginRequest
+    {
+        public string Username { get; set; }
+        public string Password { get; set; }
+    }
+}
+

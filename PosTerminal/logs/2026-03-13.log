@@ -1,0 +1,63 @@
+[2026-03-13T23:35:29.8076380Z] [INFO] PosTerminal started with device 'PayGo'.
+[2026-03-13T23:36:06.7713134Z] [INFO] PosTerminal started with device 'PayGo'.
+[2026-03-13T23:37:08.0655923Z] [INFO] PosTerminal started with device 'PayGo'.
+[2026-03-13T23:37:12.1612818Z] [ERROR] Unhandled exception: System.IO.FileNotFoundException: Could not load file or assembly 'System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089'. Sistem belirtilen dosyayı bulamıyor.
+File name: 'System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089'
+   at PAYGO_OKC.PAYGO_OKC..ctor(Boolean bAsync)
+   at PosTerminal.Services.PaygoService..ctor(AppConfig config, LogService logService) in C:\Users\Yasin\source\repos\yasinaltunkaya\pos_entegre\PosTerminal\Services\PaygoService.cs:line 17
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Constructor(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitRootCache(ServiceCallSite callSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitRootCache(ServiceCallSite callSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.Resolve(ServiceCallSite callSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.CreateServiceAccessor(ServiceIdentifier serviceIdentifier)
+   at System.Collections.Concurrent.ConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(ServiceIdentifier serviceIdentifier, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngineScope.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at lambda_method10(Closure, Object, HttpContext)
+   at Microsoft.AspNetCore.Http.RequestDelegateFactory.<>c__DisplayClass81_0.<Create>b__1(HttpContext httpContext)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+[2026-03-13T23:37:27.4416608Z] [INFO] PosTerminal started with device 'PayGo'.
+[2026-03-13T23:39:31.3639483Z] [INFO] PosTerminal started with device 'PayGo'.
+[2026-03-13T23:39:50.3347849Z] [INFO] PosTerminal started with device 'PayGo'.
+[2026-03-13T23:40:06.3630276Z] [ERROR] Unhandled exception: System.DllNotFoundException: Unable to load DLL 'PAYGO_PCPOSOKC.dll' or one of its dependencies: Belirtilen modül bulunamadı. (0x8007007E)
+   at PCPOSOKC.DLL.SetCommunicateConfig(COMMTYPE commType, String strSerialPort, String strServerAddr, Int32 iServerPort)
+   at PosTerminal.Services.PaygoService.ConnectAsync(CancellationToken cancellationToken) in C:\Users\Yasin\source\repos\yasinaltunkaya\pos_entegre\PosTerminal\Services\PaygoService.cs:line 30
+   at PosTerminal.Api.PosEndpoints.<>c.<<MapPosEndpoints>b__0_0>d.MoveNext() in C:\Users\Yasin\source\repos\yasinaltunkaya\pos_entegre\PosTerminal\Api\PosEndpoints.cs:line 18
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Http.RequestDelegateFactory.ExecuteTaskResult[T](Task`1 task, HttpContext httpContext)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+[2026-03-13T23:40:50.7709870Z] [INFO] PosTerminal started with device 'PayGo'.
+[2026-03-13T23:40:58.3452266Z] [ERROR] Unhandled exception: System.DllNotFoundException: Unable to load DLL 'PAYGO_PCPOSOKC.dll' or one of its dependencies: Belirtilen modül bulunamadı. (0x8007007E)
+   at PCPOSOKC.DLL.SetCommunicateConfig(COMMTYPE commType, String strSerialPort, String strServerAddr, Int32 iServerPort)
+   at PosTerminal.Services.PaygoService.ConnectAsync(CancellationToken cancellationToken) in C:\Users\Yasin\source\repos\yasinaltunkaya\pos_entegre\PosTerminal\Services\PaygoService.cs:line 30
+   at PosTerminal.Api.PosEndpoints.<>c.<<MapPosEndpoints>b__0_0>d.MoveNext() in C:\Users\Yasin\source\repos\yasinaltunkaya\pos_entegre\PosTerminal\Api\PosEndpoints.cs:line 18
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Http.RequestDelegateFactory.ExecuteTaskResult[T](Task`1 task, HttpContext httpContext)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+[2026-03-13T23:41:40.4179799Z] [INFO] PosTerminal started with device 'PayGo'.
+[2026-03-13T23:49:08.3191467Z] [INFO] PosTerminal started with device 'PayGo'.
+[2026-03-13T23:53:11.0331619Z] [INFO] PosTerminal started with device 'PayGo'.
+[2026-03-13T23:53:25.5131537Z] [ERROR] Unhandled exception: System.DllNotFoundException: Unable to load DLL 'PAYGO_PCPOSOKC.dll' or one of its dependencies: Belirtilen modül bulunamadı. (0x8007007E)
+   at PCPOSOKC.DLL.SetCommunicateConfig(COMMTYPE commType, String strSerialPort, String strServerAddr, Int32 iServerPort)
+   at PosTerminal.Services.PaygoService.ConnectAsync(CancellationToken cancellationToken) in C:\Users\Yasin\source\repos\yasinaltunkaya\pos_entegre\PosTerminal\Services\PaygoService.cs:line 31
+   at PosTerminal.Api.PosEndpoints.<>c.<<MapPosEndpoints>b__0_0>d.MoveNext() in C:\Users\Yasin\source\repos\yasinaltunkaya\pos_entegre\PosTerminal\Api\PosEndpoints.cs:line 18
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Http.RequestDelegateFactory.ExecuteTaskResult[T](Task`1 task, HttpContext httpContext)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+[2026-03-13T23:53:41.8124924Z] [INFO] PosTerminal started with device 'PayGo'.

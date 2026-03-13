@@ -12,7 +12,7 @@ using PaygoAgent.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 // Force Kestrel to listen on the required endpoint for cloud ERP calls.
-builder.WebHost.UseUrls("http://0.0.0.0:5050");
+builder.WebHost.UseUrls("http://localhost:5050");
 
 var configPath = Path.Combine(builder.Environment.ContentRootPath, "config.ini");
 var appConfig = ConfigReader.Load(configPath);

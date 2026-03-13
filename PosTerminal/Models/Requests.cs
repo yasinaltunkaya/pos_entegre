@@ -13,3 +13,4 @@ namespace PosTerminal.Models
         public string Password { get; set; }
     }
 }
+

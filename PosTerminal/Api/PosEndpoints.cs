@@ -65,5 +65,6 @@ namespace PosTerminal.Api
         {
             base.Dispose(disposing);
         }
+
     }
 }

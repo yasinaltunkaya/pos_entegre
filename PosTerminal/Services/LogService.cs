@@ -43,6 +43,7 @@ namespace PosTerminal.Services
             {
                 _semaphore.Release();
             }
+
         }
     }
 }

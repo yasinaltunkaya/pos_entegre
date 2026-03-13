@@ -15,4 +15,5 @@ namespace PosTerminal.Services
         Task<object> CashierLogoutAsync(CancellationToken cancellationToken = default(CancellationToken));
         object GetStatus();
     }
+
 }

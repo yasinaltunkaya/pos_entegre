@@ -1,0 +1,23 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/PaygoAgent/obj/Debug/net8.0
+/PaygoAgent/obj/Release/net8.0
+/PaygoAgent/bin/Debug/net8.0
+/PaygoAgent/bin/Debug/net8.0/PaygoAgent.deps.json
+/PaygoAgent/bin/Debug/net8.0/PaygoAgent.dll
+/PaygoAgent/bin/Debug/net8.0/PaygoAgent.exe
+/PaygoAgent/bin/Debug/net8.0/PaygoAgent.pdb
+/PaygoAgent/bin/Debug/net8.0/PaygoAgent.runtimeconfig.json
+/PaygoAgent/bin/Debug/net8.0/PaygoAgent.staticwebassets.endpoints.json
+/PaygoAgent/logs
+/PaygoAgent/logs/2026-03-13.log
+/PaygoAgent/obj
+/PaygoAgent/obj/PaygoAgent.csproj.nuget.dgspec.json
+/PaygoAgent/obj/PaygoAgent.csproj.nuget.g.props
+/PaygoAgent/obj/PaygoAgent.csproj.nuget.g.targets
+/PaygoAgent/obj/project.assets.json
+/PaygoAgent/obj/project.nuget.cache
+/PaygoAgent/Properties

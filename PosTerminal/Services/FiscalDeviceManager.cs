@@ -28,4 +28,5 @@ namespace PosTerminal.Services
 
         public IFiscalDeviceService Current { get { return _selected; } }
     }
+
 }

@@ -76,6 +76,7 @@ namespace PosTerminal.Services
             {
                 throw new InvalidOperationException("Selected device is not connected. Call /api/connect first.");
             }
+
         }
     }
 }

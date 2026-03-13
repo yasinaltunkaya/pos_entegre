@@ -5,3 +5,5 @@
 /.vs
 /PaygoAgent/obj/Debug/net8.0
 /PaygoAgent/obj/Release/net8.0
+/PosTerminal/obj
+/PosTerminal/bin/Debug/net8.0
